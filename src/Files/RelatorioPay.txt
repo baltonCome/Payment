@@ -1,0 +1,257 @@
+PaySell
+Maputo
+
+
+
+==================================
+[Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: -3066.6666666666665
+horas Extras: 1463.6363636363637
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 19612.727272727272
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: -1066.6666666666667
+horas Extras: 1600.0000000000002
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 26123.636363636364
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 2.0
+horas Extras: 12.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 17661.212121212124
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: 5.0
+horas Extras: 14.0
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 21663.0303030303
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: 1.0
+horas Extras: 14.0
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 25929.696969696968
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 2.0
+horas Extras: 5.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 16929.39393939394
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: 3.0
+horas Extras: 12.0
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 23505.454545454544
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: 0.0
+horas Extras: 13.0
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 26850.909090909092
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 2.0
+horas Extras: 15.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 17974.848484848488
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 3.0
+horas Extras: 12.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 16894.545454545456
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 3.0
+horas Extras: 12.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 16894.545454545456
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 0.0
+horas Extras: 13.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 19299.090909090908
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: 2.0
+horas Extras: 14.0
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 24863.030303030304
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 0.0
+horas Extras: 3.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 18253.636363636364
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: 3.0
+horas Extras: 12.0
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 23505.454545454544
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 1.0
+horas Extras: 12.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 18427.878787878788
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: 2.0
+horas Extras: 22.0
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 26026.666666666668
+
+
+, Nome: Jaime
+salario Base: 23000.0
+bonus: 0.0
+cargo: Vendedor
+faltas: 1.0
+horas Extras: 12.0
+subsidio Funeral: -460.0
+assistencia Medica: -460.0
+aposentacao: -690.0
+IRPS: -3450.0
+salario Liquido: 18427.878787878788
+
+
+, Nome: Carlos
+salario Base: 32000.0
+bonus: 0.0
+cargo: Tecnico de T.I
+faltas: 3.0
+horas Extras: 12.0
+subsidio Funeral: -640.0
+assistencia Medica: -640.0
+aposentacao: -960.0
+IRPS: -4800.0
+salario Liquido: 23505.454545454544
+
+
+]
+==================================
+Sat Feb 13 12:05:10 PST 2021
+Operador: 

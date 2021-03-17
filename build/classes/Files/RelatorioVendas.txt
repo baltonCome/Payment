@@ -1,0 +1,21 @@
+PaySell
+Maputo
+
+
+
+==================================
+[ID da Venda: FM5
+Nome do Cliente: Arao
+Marca do Carro: Ford
+Modelo do Carro: Mustang
+Ano Fabrico: 2012
+Cor Do Carro: Azul
+Preco do Carro: 4200000.0
+Quantidade: 3
+Vendedor: jmt
+
+
+]
+==================================
+Wed Jan 13 13:46:28 PST 2021
+Operador: 

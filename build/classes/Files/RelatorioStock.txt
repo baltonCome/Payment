@@ -1,0 +1,26 @@
+PaySell
+Maputo
+
+
+
+==================================
+[marca: Ford
+modelo: Mustang
+ano: 2012
+cor: Azul
+preco: 1400000.0
+quantidade: 7
+
+
+, marca: Ferrari
+modelo: Carrera GT
+ano: 2012
+cor: branco
+preco: 500000.0
+quantidade: 7
+
+
+]
+==================================
+Wed Jan 13 13:46:51 PST 2021
+Operador: 
