@@ -18,7 +18,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import Models.Salario;
-import Controller.GuardarSalarios;
+import Controller.GuardarSalario;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -116,7 +116,7 @@ public class TabelaPagamentos extends JFrame implements ActionListener {
         model.setNumRows(0);
         ArrayList <Salario> salary = new ArrayList<>();
         try {           
-            salary = GuardarSalarios.mostrar();
+            salary = GuardarSalario.mostrar();
             if(!salary.isEmpty()){
                 for (int i = 0; i < salary.size(); i++) {
                     model.addRow(new String[]{

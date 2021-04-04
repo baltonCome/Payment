@@ -1,0 +1,43 @@
+PaySell
+Maputo
+
+
+
+==================================
+[ID da Venda: FM18
+Nome do Cliente: Alexandre Jose
+Marca do Carro: Ford 
+Modelo do Carro: Mustang
+Ano Fabrico: 2012
+Cor Do Carro: Azul
+Preco do Carro: 1200000.0
+Chassi: fong2012azul4
+Vendedor: j
+
+
+, ID da Venda: FM19
+Nome do Cliente: Josuleima Castilho
+Marca do Carro: ford 
+Modelo do Carro: mustang
+Ano Fabrico: 2012
+Cor Do Carro: Azul
+Preco do Carro: 1200000.0
+Chassi: fong2012azul4
+Vendedor: j
+
+
+, ID da Venda: FM20
+Nome do Cliente: JOse pinhos
+Marca do Carro: ford 
+Modelo do Carro: mustang
+Ano Fabrico: 2012
+Cor Do Carro: Azul
+Preco do Carro: 1200000.0
+Chassi: fong2012azul4
+Vendedor: j
+
+
+]
+==================================
+Sat Apr 03 22:56:27 PDT 2021
+Operador: j

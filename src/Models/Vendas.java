@@ -2,7 +2,7 @@ package Models;
 
 import java.io.Serializable;
 
-public class Venda implements Serializable {
+public class Vendas implements Serializable {
     
     private String idVenda;
     private String nomeCliente;
@@ -14,10 +14,10 @@ public class Venda implements Serializable {
     private String chassi;
     private String nomeVendedor;
     
-    public Venda(){
+    public Vendas(){
     }
 
-    public Venda(String idVenda, String nomeCliente, String marcaCarro, String modeloCarro,
+    public Vendas(String idVenda, String nomeCliente, String marcaCarro, String modeloCarro,
             String anoCarro, String corCarro, double precoVenda, String chassi, String nomeVendedor) {
         this.idVenda = idVenda;
         this.nomeCliente = nomeCliente;

@@ -17,8 +17,8 @@ import static javax.swing.JTable.AUTO_RESIZE_OFF;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import Models.Venda;
-import Controller.GuardarVendas;
+import Models.Vendas;
+import Controller.GuardarVenda;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -112,9 +112,9 @@ public class TabelaVendas extends JFrame implements ActionListener {
     private void dadosTabela() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Venda> vendas = new ArrayList<>();
+        ArrayList <Vendas> vendas = new ArrayList<>();
         try {           
-            vendas = GuardarVendas.mostrar();
+            vendas = GuardarVenda.mostrar();
             if(!vendas.isEmpty()){
                 for (int i = 0; i < vendas.size(); i++) {
                     model.addRow(new String[]{

@@ -1,6 +1,6 @@
 package Controller;
 
-import Models.Carro;
+import Models.Carros;
 import java.awt.HeadlessException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
-public class GuardarCarros implements Serializable {
+public class GuardarCarro implements Serializable {
     
-    public static void guardar (ArrayList <Carro> carros ) throws IOException{
+    public static void guardar (ArrayList <Carros> carros ) throws IOException{
         
         if (!carros.isEmpty()){
             try(FileOutputStream fos = new FileOutputStream("src/Files/Carros.dat")){
@@ -31,22 +31,22 @@ public class GuardarCarros implements Serializable {
         }
     }
      
-    public static ArrayList<Carro> mostrar () throws IOException, ClassNotFoundException{
+    public static ArrayList<Carros> mostrar () throws IOException, ClassNotFoundException{
         
         try (FileInputStream fis = new FileInputStream("src/Files/Carros.dat")){
             try(ObjectInputStream ois = new ObjectInputStream(fis)){
-                return (ArrayList<Carro>) ois.readObject();
+                return (ArrayList<Carros>) ois.readObject();
             }
         }
     } 
     
-    public static void apagar(ArrayList<Carro> carros, String chassi){
+    public static void apagar(ArrayList<Carros> carros, String chassi){
 
         boolean found = false;
         if (Files.exists(Paths.get("src/Files/Carros.dat"))) {
             if (!carros.isEmpty()) {
                 try {
-                    Carro procurado;
+                    Carros procurado;
                     for (int i = 0; i < carros.size(); i++) {
                         if (chassi.equalsIgnoreCase(carros.get(i).getChassi())) {
                             found = true;
@@ -66,9 +66,9 @@ public class GuardarCarros implements Serializable {
         }
     }
 
-    public static Carro procurar(ArrayList<Carro> carros, String marca){
+    public static Carros procurar(ArrayList<Carros> carros, String marca){
 
-        Carro procurado = null;
+        Carros procurado = null;
         if (Files.exists(Paths.get("src/Files/Carros.dat"))) {
             if (!carros.isEmpty()) {
                 try {
@@ -84,7 +84,7 @@ public class GuardarCarros implements Serializable {
         return procurado;
     }
     
-    public static int podeVender(ArrayList<Carro> car, String marca, String modelo, String chassi){
+    public static int podeVender(ArrayList<Carros> car, String marca, String modelo, String chassi){
         
         if(Files.exists(Paths.get("src/Files/Carros.dat"))){
             if(!car.isEmpty()){
@@ -99,7 +99,7 @@ public class GuardarCarros implements Serializable {
         return -1;
     }
     
-    public static void vendido(ArrayList<Carro> car, String chassi) throws IOException{
+    public static void vendido(ArrayList<Carros> car, String chassi) throws IOException{
         
         if(Files.exists(Paths.get("src/Files/Carros.dat"))){
             if(!car.isEmpty()){

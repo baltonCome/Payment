@@ -22,14 +22,14 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import Models.Carro;
-import Controller.GuardarCarros;
+import Models.Carros;
+import Controller.GuardarCarro;
 import Controller.GuardarGestor;
-import Controller.GuardarSalarios;
-import Controller.GuardarVendas;
+import Controller.GuardarSalario;
+import Controller.GuardarVenda;
 import Models.Gestor;
 import Models.Salario;
-import Models.Venda;
+import Models.Vendas;
 import ModelsDao.Metodos;
 import java.awt.Dimension;
 import java.nio.file.Files;
@@ -347,9 +347,9 @@ public class MenuGestor extends JFrame implements ActionListener{
     private void dadosTabelaCar() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Carro> cars = new ArrayList<>();
+        ArrayList <Carros> cars = new ArrayList<>();
         try {           
-            cars = GuardarCarros.mostrar();
+            cars = GuardarCarro.mostrar();
             if(!cars.isEmpty()){
                 for (int i = 0; i < cars.size(); i++) {
                     model.addRow(new String[]{
@@ -470,7 +470,7 @@ public class MenuGestor extends JFrame implements ActionListener{
         JLabel about = new JLabel("PaySell");
         JLabel aboutIcon = new JLabel(new ImageIcon("src/Files/Icons/info.png"));    
         JPanel infoColorPanel = new JPanel();
-        JLabel paysell = new JLabel("<html>*SOBRE ESTE APP:<br/>Um Sistema de gerenciamento de uma macro-empresa."+
+        JLabel paysell = new JLabel("<html>*SOBRE ESTE SYS:<br/>Um Sistema de gerenciamento de uma macro-empresa."+
             "Venda e pagamento de salarios."+
             "<br/>"+"*O Sistema Permite:"+
             "<br/>"+"1.Criar, exibir, atualizar e remover dados de dois perfis."+
@@ -596,9 +596,9 @@ public class MenuGestor extends JFrame implements ActionListener{
         }else if(ae.getSource()== searchCar){
             if (Files.exists(Paths.get("src/Files/Carros.dat"))){ 
                 try {
-                    if(!GuardarCarros.mostrar().isEmpty()){
-                        ArrayList<Carro> procurar = GuardarCarros.mostrar();
-                        JOptionPane.showMessageDialog(null, GuardarCarros.procurar(procurar, searchBox.getText()));
+                    if(!GuardarCarro.mostrar().isEmpty()){
+                        ArrayList<Carros> procurar = GuardarCarro.mostrar();
+                        JOptionPane.showMessageDialog(null, GuardarCarro.procurar(procurar, searchBox.getText()));
                     }
                 } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(MenuGestor.class.getName()).log(Level.SEVERE, null, ex);
@@ -607,10 +607,10 @@ public class MenuGestor extends JFrame implements ActionListener{
         }else if(ae.getSource()== removeCar){
             if (Files.exists(Paths.get("src/Files/Carros.dat"))){ 
                 try {
-                    if(!GuardarCarros.mostrar().isEmpty()){
-                        ArrayList<Carro> remover = GuardarCarros.mostrar();
+                    if(!GuardarCarro.mostrar().isEmpty()){
+                        ArrayList<Carros> remover = GuardarCarro.mostrar();
                         String id = JOptionPane.showInputDialog("Chassi do Carro: ");
-                        GuardarCarros.apagar(remover, id);
+                        GuardarCarro.apagar(remover, id);
                     }
                 } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(MenuGestor.class.getName()).log(Level.SEVERE, null, ex);
@@ -653,9 +653,9 @@ public class MenuGestor extends JFrame implements ActionListener{
         }else if(ae.getSource()== sellReport){
             if(Files.exists(Paths.get("src/Files/Vendas.dat"))){
                 try {
-                    if(!GuardarVendas.mostrar().isEmpty()){
-                        ArrayList <Venda> vendas = new ArrayList<>();
-                        vendas = GuardarVendas.mostrar();
+                    if(!GuardarVenda.mostrar().isEmpty()){
+                        ArrayList <Vendas> vendas = new ArrayList<>();
+                        vendas = GuardarVenda.mostrar();
                         Metodos.relatorioVendas(vendas, "RelatorioVendas");
                     }
                 } catch (IOException | ClassNotFoundException ex) {
@@ -666,8 +666,8 @@ public class MenuGestor extends JFrame implements ActionListener{
             ArrayList <Salario> salarios = new ArrayList<>();
             if(Files.exists(Paths.get("src/Files/Salarios.dat"))){
                 try {
-                    if(!GuardarSalarios.mostrar().isEmpty()){                      
-                        salarios = GuardarSalarios.mostrar();
+                    if(!GuardarSalario.mostrar().isEmpty()){                      
+                        salarios = GuardarSalario.mostrar();
                         Metodos.relatorioPagamentos(salarios, "RelatorioPay");
                     }
                 } catch (IOException | ClassNotFoundException ex) {
@@ -677,9 +677,9 @@ public class MenuGestor extends JFrame implements ActionListener{
         }else if(ae.getSource()== stockReport){
             if(Files.exists(Paths.get("src/Files/Carros.dat"))){
                 try {
-                    if(!GuardarCarros.mostrar().isEmpty()){
-                        ArrayList <Carro> carro = new ArrayList<>();
-                        carro = GuardarCarros.mostrar();
+                    if(!GuardarCarro.mostrar().isEmpty()){
+                        ArrayList <Carros> carro = new ArrayList<>();
+                        carro = GuardarCarro.mostrar();
                         Metodos.relatorioStock(carro, "RelatorioStock");
                     }
                 } catch (IOException | ClassNotFoundException ex) {

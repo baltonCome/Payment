@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import Models.Carro;
-import Controller.GuardarCarros;
+import Models.Carros;
+import Controller.GuardarCarro;
 import ModelsDao.Metodos;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -112,16 +112,16 @@ public class CarRegisterForm extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== guardar){
             try{
-                ArrayList <Carro> cars = new ArrayList<>();
+                ArrayList <Carros> cars = new ArrayList<>();
                 if(Files.exists(Paths.get("src/Files/Carros.dat"))){
-                    if(!GuardarCarros.mostrar().isEmpty()){
-                        cars = GuardarCarros.mostrar();
+                    if(!GuardarCarro.mostrar().isEmpty()){
+                        cars = GuardarCarro.mostrar();
                     }
                 }
-                Carro car = new Carro(marcaField.getText(),modeloField.getText(),Integer.parseInt(anoField.getText()),
+                Carros car = new Carros(marcaField.getText(),modeloField.getText(),Integer.parseInt(anoField.getText()),
                     corField.getText(),Double.parseDouble(precoField.getText()),chassiField.getText());
                 cars.add(car);
-                GuardarCarros.guardar(cars);
+                GuardarCarro.guardar(cars);
                 JOptionPane.showMessageDialog(null, "Veiculo Registado");
                 dispose();
                 new MenuGestor().Veiculos();

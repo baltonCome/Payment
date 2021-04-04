@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class GuardarSalarios implements Serializable {
+public class GuardarSalario implements Serializable {
     
     public static boolean guardar (ArrayList <Salario> salarios ) throws IOException{
         

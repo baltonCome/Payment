@@ -1,9 +1,9 @@
 package View;
 
-import Controller.GuardarCarros;
-import Controller.GuardarVendas;
-import Models.Carro;
-import Models.Venda;
+import Controller.GuardarCarro;
+import Controller.GuardarVenda;
+import Models.Carros;
+import Models.Vendas;
 import ModelsDao.Metodos;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -103,9 +103,9 @@ public class MenuVendedor extends JFrame implements ActionListener{
     private void dadosTabelaCar() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Carro> cars = new ArrayList<>();
+        ArrayList <Carros> cars = new ArrayList<>();
         try {           
-            cars = GuardarCarros.mostrar();
+            cars = GuardarCarro.mostrar();
             if(!cars.isEmpty()){
                 for (int i = 0; i < cars.size(); i++) {
                     model.addRow(new String[]{
@@ -201,7 +201,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
         JLabel about = new JLabel("PaySell");
         JLabel aboutIcon = new JLabel(new ImageIcon("src/Files/Icons/info.png"));    
         JPanel infoColorPanel = new JPanel();
-        JLabel paysell = new JLabel("<html>*SOBRE ESTE APP:<br/>Um Sistema de gerenciamento de uma macro-empresa."+
+        JLabel paysell = new JLabel("<html>*SOBRE ESTE SYS:<br/>Um Sistema de gerenciamento de uma macro-empresa."+
             "Venda e pagamento de salarios."+
             "<br/>"+"*O Sistema Permite:"+
             "<br/>"+"1.Criar, exibir, atualizar e remover dados de dois perfis."+
@@ -243,9 +243,9 @@ public class MenuVendedor extends JFrame implements ActionListener{
         }else if(ae.getSource()== report){
             if(Files.exists(Paths.get("src/Files/Vendas.dat"))){
                 try {
-                    if(!GuardarVendas.mostrar().isEmpty()){
-                        ArrayList <Venda> vendas = new ArrayList<>();
-                        vendas = GuardarVendas.mostrar();
+                    if(!GuardarVenda.mostrar().isEmpty()){
+                        ArrayList <Vendas> vendas = new ArrayList<>();
+                        vendas = GuardarVenda.mostrar();
                         Metodos.relatorioVendas(vendas, "RelatorioVendas");
                     }
                 } catch (IOException | ClassNotFoundException ex) {
@@ -262,9 +262,9 @@ public class MenuVendedor extends JFrame implements ActionListener{
         }else if(ae.getSource()== search){
             if (Files.exists(Paths.get("src/Files/Carros.dat"))){ 
                 try {
-                    if(!GuardarCarros.mostrar().isEmpty()){
-                        ArrayList<Carro> procurar = GuardarCarros.mostrar();
-                        JOptionPane.showMessageDialog(null, GuardarCarros.procurar(procurar, searchBox.getText()));
+                    if(!GuardarCarro.mostrar().isEmpty()){
+                        ArrayList<Carros> procurar = GuardarCarro.mostrar();
+                        JOptionPane.showMessageDialog(null, GuardarCarro.procurar(procurar, searchBox.getText()));
                     }
                 } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(MenuGestor.class.getName()).log(Level.SEVERE, null, ex);

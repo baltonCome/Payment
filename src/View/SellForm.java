@@ -1,9 +1,9 @@
 package View;
 
-import Controller.GuardarCarros;
-import Controller.GuardarVendas;
-import Models.Carro;
-import Models.Venda;
+import Controller.GuardarCarro;
+import Controller.GuardarVenda;
+import Models.Carros;
+import Models.Vendas;
 import ModelsDao.Metodos;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -200,9 +200,9 @@ public class SellForm extends JFrame implements ActionListener {
     private void dadosTabelaCar() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Carro> cars = new ArrayList<>();
+        ArrayList <Carros> cars = new ArrayList<>();
         try {           
-            cars = GuardarCarros.mostrar();
+            cars = GuardarCarro.mostrar();
             if(!cars.isEmpty()){
                 for (int i = 0; i < cars.size(); i++) {
                     model.addRow(new String[]{
@@ -218,21 +218,21 @@ public class SellForm extends JFrame implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent ae){
-        ArrayList<Carro> carro = new ArrayList<>();
+        ArrayList<Carros> carro = new ArrayList<>();
         if(ae.getSource()== processar){
             if (Files.exists(Paths.get("src/Files/Carros.dat"))){ 
                 try {
-                    if(!GuardarCarros.mostrar().isEmpty()){
-                        carro = GuardarCarros.mostrar();
+                    if(!GuardarCarro.mostrar().isEmpty()){
+                        carro = GuardarCarro.mostrar();
                     }
-                    if (GuardarCarros.podeVender(carro, marcaField.getText(), modeloField.getText(), 
+                    if (GuardarCarro.podeVender(carro, marcaField.getText(), modeloField.getText(), 
                             chassiField.getText()) != -1){
-                        getAno.setText(""+carro.get(GuardarCarros.podeVender(carro, marcaField.getText(),
+                        getAno.setText(""+carro.get(GuardarCarro.podeVender(carro, marcaField.getText(),
                             modeloField.getText(), chassiField.getText())).getAno());
-                        getCor.setText(carro.get(GuardarCarros.podeVender(carro, marcaField.getText(),
+                        getCor.setText(carro.get(GuardarCarro.podeVender(carro, marcaField.getText(),
                             modeloField.getText(), chassiField.getText())).getCor());
                         getComprador.setText(""+clienteField.getText());
-                        getTotal.setText(""+carro.get(GuardarCarros.podeVender(carro, marcaField.getText(), modeloField.getText(), chassiField.getText())).getPreco());
+                        getTotal.setText(""+carro.get(GuardarCarro.podeVender(carro, marcaField.getText(), modeloField.getText(), chassiField.getText())).getPreco());
                         ano.setVisible(true);
                         comprador.setVisible(true);
                         total.setVisible(true);
@@ -246,20 +246,20 @@ public class SellForm extends JFrame implements ActionListener {
             }
         }else if(ae.getSource()== confirmar){
             try{
-                if(!GuardarCarros.mostrar().isEmpty()){
-                    carro = GuardarCarros.mostrar();
+                if(!GuardarCarro.mostrar().isEmpty()){
+                    carro = GuardarCarro.mostrar();
                 }
-                GuardarCarros.vendido(carro, chassiField.getText());
-                ArrayList <Venda> venda = new ArrayList<>();
+                GuardarCarro.vendido(carro, chassiField.getText());
+                ArrayList <Vendas> venda = new ArrayList<>();
                 if(Files.exists(Paths.get("src/Files/Vendas.dat"))){
-                    if(!GuardarVendas.mostrar().isEmpty()){
-                        venda = GuardarVendas.mostrar();
+                    if(!GuardarVenda.mostrar().isEmpty()){
+                        venda = GuardarVenda.mostrar();
                     }
                 }       
-                Venda vend = new Venda(Metodos.vendaId(marcaField.getText(), modeloField.getText()),clienteField.getText(),marcaField.getText(),
+                Vendas vend = new Vendas(Metodos.vendaId(marcaField.getText(), modeloField.getText()),clienteField.getText(),marcaField.getText(),
                     modeloField.getText(),getAno.getText(),getCor.getText(),Double.parseDouble(getTotal.getText()),chassiField.getText(),Metodos.currentUser);
                 venda.add(vend);
-                GuardarVendas.guardar(venda);
+                GuardarVenda.guardar(venda);
                 JOptionPane.showMessageDialog(null, "Carro vendido");
                 Metodos.comprovativoVenda(vend, "Comprovativo de Venda");
                 dispose();

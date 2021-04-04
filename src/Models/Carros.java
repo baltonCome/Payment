@@ -3,9 +3,9 @@ package Models;
 import java.io.Serializable;
 
 
-public class Carro implements Serializable {
+public class Carros implements Serializable {
     
-    public Carro(){}
+    public Carros(){}
     
     private String marca;
     private String modelo;
@@ -14,7 +14,7 @@ public class Carro implements Serializable {
     private double preco;
     private String chassi;
 
-    public Carro(String marca, String modelo, int ano, String cor, double preco, String chassi) {
+    public Carros(String marca, String modelo, int ano, String cor, double preco, String chassi) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;

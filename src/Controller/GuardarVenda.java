@@ -1,6 +1,6 @@
 package Controller;
 
-import Models.Venda;
+import Models.Vendas;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,9 +11,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 
-public class GuardarVendas {
+public class GuardarVenda {
     
-    public static void guardar (ArrayList <Venda> vendas ) throws IOException{
+    public static void guardar (ArrayList <Vendas> vendas ) throws IOException{
         
         if (!vendas.isEmpty()){
             try(FileOutputStream fos = new FileOutputStream("src/Files/Vendas.dat")){
@@ -28,16 +28,16 @@ public class GuardarVendas {
         }
     }
     
-    public static ArrayList<Venda> mostrar () throws IOException, ClassNotFoundException{
+    public static ArrayList<Vendas> mostrar () throws IOException, ClassNotFoundException{
         
         try (FileInputStream fis = new FileInputStream("src/Files/Vendas.dat")){
             try(ObjectInputStream ois = new ObjectInputStream(fis)){
-                return (ArrayList<Venda>) ois.readObject();
+                return (ArrayList<Vendas>) ois.readObject();
             }
         }
     }
     
-    public static String procurar(ArrayList<Venda> venda, String username){
+    public static String procurar(ArrayList<Vendas> venda, String username){
 
         String procurado = null;
         if (Files.exists(Paths.get("src/Files/Vendas.dat"))) {

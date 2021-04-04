@@ -1,0 +1,18 @@
+PaySell
+Maputo
+
+
+
+==================================
+[marca: fORD 
+modelo: Mustang
+ano: 2012
+cor: Azul
+preco: 1200000.0
+chassi: FONG2012AZUL4
+
+
+]
+==================================
+Sat Apr 03 22:56:11 PDT 2021
+Operador: Savagery

@@ -1,8 +1,8 @@
 package ModelsDao;
 
-import Models.Carro;
+import Models.Carros;
 import Models.Salario;
-import Models.Venda;
+import Models.Vendas;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,7 +19,7 @@ public class Metodos {
     
     public static String currentUser = "";
     
-    ArrayList<Carro> carro = new ArrayList<>();
+    ArrayList<Carros> carro = new ArrayList<>();
     
     public static int codigo() throws IOException{
         
@@ -57,7 +57,7 @@ public class Metodos {
     }
     
         
-    public static void relatorioVendas(ArrayList<Venda> venda, String titulo) throws IOException{
+    public static void relatorioVendas(ArrayList<Vendas> venda, String titulo) throws IOException{
         
         String rel = "PaySell\nMaputo\n\n\n"+"\n==================================\n"+String.valueOf(venda)+
                 "\n==================================\n"+new Date(System.currentTimeMillis()).toString()+"\nOperador: "+currentUser;
@@ -90,7 +90,7 @@ public class Metodos {
         open(titulo);
     }
     
-    public static void relatorioStock(ArrayList<Carro> carro, String titulo) throws IOException{
+    public static void relatorioStock(ArrayList<Carros> carro, String titulo) throws IOException{
         
         String rel = "PaySell\nMaputo\n\n\n"+"\n==================================\n"+String.valueOf(carro)+
                 "\n==================================\n"+new Date(System.currentTimeMillis()).toString()+"\nOperador: "+currentUser;

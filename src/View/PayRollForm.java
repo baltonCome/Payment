@@ -1,7 +1,7 @@
 package View;
 
 import Controller.GuardarFuncionario;
-import Controller.GuardarSalarios;
+import Controller.GuardarSalario;
 import Models.Funcionario;
 import Models.Salario;
 import ModelsDao.Metodos;
@@ -157,8 +157,8 @@ public class PayRollForm extends JFrame{
                 try{
                     ArrayList <Salario> pay = new ArrayList<>();    
                     if(Files.exists(Paths.get("src/Files/Salarios.dat"))){ 
-                        if(!GuardarSalarios.mostrar().isEmpty()){
-                            pay = GuardarSalarios.mostrar();
+                        if(!GuardarSalario.mostrar().isEmpty()){
+                            pay = GuardarSalario.mostrar();
                         }
                     }
                     Salario sal = new Salario(nomeField.getText(), Double.parseDouble(salarioField.getText()), 
@@ -178,7 +178,7 @@ public class PayRollForm extends JFrame{
                             Metodos.faltas(Integer.parseInt(faltasField.getText()), Double.parseDouble(salarioField.getText()))+
                             Metodos.horasExtras(Integer.parseInt(horasField.getText()), Double.parseDouble(salarioField.getText())));
                     pay.add(sal);
-                    GuardarSalarios.guardar(pay);                  
+                    GuardarSalario.guardar(pay);                  
                     dispose();
                     JOptionPane.showMessageDialog(null, "Pagamento do "+nomeField.getText()+" Processado"); 
                     ArrayList<Funcionario> funcionario = new ArrayList<>();
