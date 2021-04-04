@@ -199,6 +199,11 @@ public class FuncRegisterForm extends JFrame implements ActionListener{
         }
         else if (ae.getSource() == cancelar){
            dispose();
+            try {
+                new MenuGestor().Funcionarios();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(FuncRegisterForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else if (ae.getSource()== cargoBox){
             if (cargoBox.getSelectedIndex()==1){
                senha.setVisible(true);

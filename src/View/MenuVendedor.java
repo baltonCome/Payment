@@ -2,8 +2,8 @@ package View;
 
 import Controller.GuardarCarros;
 import Controller.GuardarVendas;
-import Models.Carros;
-import Models.Vendas;
+import Models.Carro;
+import Models.Venda;
 import ModelsDao.Metodos;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -103,7 +103,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
     private void dadosTabelaCar() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Carros> cars = new ArrayList<>();
+        ArrayList <Carro> cars = new ArrayList<>();
         try {           
             cars = GuardarCarros.mostrar();
             if(!cars.isEmpty()){
@@ -114,7 +114,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
                         String.valueOf(cars.get(i).getAno()),
                         cars.get(i).getCor(),
                         String.valueOf(cars.get(i).getPreco()),
-                        String.valueOf(cars.get(i).getQuantidade())
+                        cars.get(i).getChassi()
                     }); 
                 }
             }            
@@ -158,7 +158,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
         colunas.addColumn("Ano");
         colunas.addColumn("Cor");
         colunas.addColumn("Preco");
-        colunas.addColumn("Quantidade");    
+        colunas.addColumn("Chassi");    
         
         tabela = new JTable(colunas) {
             @Override
@@ -213,7 +213,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
             "<br/>"+"*INFO DO APP:"+
             "<br/>"+"Densenvolvido por: Balton Come"+
             "<br/>"+"Densenvolvido em: Java SE"+
-            "<br/>"+"Terminado na data: 28.08.2020_____________PaySell Versao 1.0.0</html>", SwingConstants.CENTER);
+            "<br/>"+"Terminado na data: EM CURSO_____________PaySell Versao 1.2.0</html>", SwingConstants.CENTER);
         
         add(paysell);     
         paysell.setBounds(210,90,400,250);
@@ -244,7 +244,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
             if(Files.exists(Paths.get("src/Files/Vendas.dat"))){
                 try {
                     if(!GuardarVendas.mostrar().isEmpty()){
-                        ArrayList <Vendas> vendas = new ArrayList<>();
+                        ArrayList <Venda> vendas = new ArrayList<>();
                         vendas = GuardarVendas.mostrar();
                         Metodos.relatorioVendas(vendas, "RelatorioVendas");
                     }
@@ -253,6 +253,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
                 }
             }
         }else if(ae.getSource()== information){
+            dispose();
             try {
                 new MenuVendedor().About();
             } catch (ClassNotFoundException ex) {
@@ -262,7 +263,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
             if (Files.exists(Paths.get("src/Files/Carros.dat"))){ 
                 try {
                     if(!GuardarCarros.mostrar().isEmpty()){
-                        ArrayList<Carros> procurar = GuardarCarros.mostrar();
+                        ArrayList<Carro> procurar = GuardarCarros.mostrar();
                         JOptionPane.showMessageDialog(null, GuardarCarros.procurar(procurar, searchBox.getText()));
                     }
                 } catch (IOException | ClassNotFoundException ex) {
@@ -282,6 +283,7 @@ public class MenuVendedor extends JFrame implements ActionListener{
                 Logger.getLogger(MenuGestor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else if(ae.getSource()== vendas){
+            dispose();
             try {
                 new MenuVendedor().Vendas();
             } catch (ClassNotFoundException ex) {

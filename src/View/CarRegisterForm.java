@@ -9,8 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import Models.Carros;
+import Models.Carro;
 import Controller.GuardarCarros;
+import ModelsDao.Metodos;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -38,10 +39,10 @@ public class CarRegisterForm extends JFrame implements ActionListener{
     JLabel preco = new JLabel("Preco: ");
     JTextField precoField = new JTextField();
     
-    JLabel quantidade = new JLabel("Quantidade: ");
-    JTextField quantidadeField = new JTextField();
+    JLabel chassi = new JLabel("Chassi: ");
+    JTextField chassiField = new JTextField();
     
-    JButton guardar = new JButton("guardar");
+    JButton guardar = new JButton("Guardar");
     JButton cancelar = new JButton("Cancelar");
     
     JPanel painel = new JPanel();
@@ -80,10 +81,10 @@ public class CarRegisterForm extends JFrame implements ActionListener{
         precoField.setBounds(150,130,150,20);
         add(precoField);
         
-        quantidade.setBounds(325,130,100,20);
-        add(quantidade);
-        quantidadeField.setBounds(400,130,150,20);
-        add(quantidadeField);
+        chassi.setBounds(325,130,100,20);
+        add(chassi);
+        chassiField.setBounds(400,130,150,20);
+        add(chassiField);
         
         guardar.setBackground(new Color(134,134,144 ));
         guardar.setBounds(130,190,170,30);
@@ -111,14 +112,14 @@ public class CarRegisterForm extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== guardar){
             try{
-                ArrayList <Carros> cars = new ArrayList<>();
+                ArrayList <Carro> cars = new ArrayList<>();
                 if(Files.exists(Paths.get("src/Files/Carros.dat"))){
                     if(!GuardarCarros.mostrar().isEmpty()){
                         cars = GuardarCarros.mostrar();
                     }
                 }
-                Carros car = new Carros(marcaField.getText(),modeloField.getText(),Integer.parseInt(anoField.getText()),
-                    corField.getText(),Double.parseDouble(precoField.getText()),Integer.parseInt(quantidadeField.getText()));
+                Carro car = new Carro(marcaField.getText(),modeloField.getText(),Integer.parseInt(anoField.getText()),
+                    corField.getText(),Double.parseDouble(precoField.getText()),chassiField.getText());
                 cars.add(car);
                 GuardarCarros.guardar(cars);
                 JOptionPane.showMessageDialog(null, "Veiculo Registado");

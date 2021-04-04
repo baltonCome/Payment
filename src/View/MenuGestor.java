@@ -22,14 +22,14 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import Models.Carros;
+import Models.Carro;
 import Controller.GuardarCarros;
 import Controller.GuardarGestor;
 import Controller.GuardarSalarios;
 import Controller.GuardarVendas;
 import Models.Gestor;
-import Models.Salarios;
-import Models.Vendas;
+import Models.Salario;
+import Models.Venda;
 import ModelsDao.Metodos;
 import java.awt.Dimension;
 import java.nio.file.Files;
@@ -38,7 +38,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class MenuGestor extends JFrame implements ActionListener{
     
@@ -308,7 +307,7 @@ public class MenuGestor extends JFrame implements ActionListener{
         colunas.addColumn("Ano");
         colunas.addColumn("Cor");
         colunas.addColumn("Preco");
-        colunas.addColumn("Quantidade");    
+        colunas.addColumn("Chassi");    
         
         tabela = new JTable(colunas) {
             @Override
@@ -348,7 +347,7 @@ public class MenuGestor extends JFrame implements ActionListener{
     private void dadosTabelaCar() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Carros> cars = new ArrayList<>();
+        ArrayList <Carro> cars = new ArrayList<>();
         try {           
             cars = GuardarCarros.mostrar();
             if(!cars.isEmpty()){
@@ -359,7 +358,7 @@ public class MenuGestor extends JFrame implements ActionListener{
                         String.valueOf(cars.get(i).getAno()),
                         cars.get(i).getCor(),
                         String.valueOf(cars.get(i).getPreco()),
-                        String.valueOf(cars.get(i).getQuantidade())
+                        cars.get(i).getChassi()
                     }); 
                 }
             }            
@@ -483,7 +482,7 @@ public class MenuGestor extends JFrame implements ActionListener{
             "<br/>"+"*INFO DO APP:"+
             "<br/>"+"Densenvolvido por: Balton Come"+
             "<br/>"+"Densenvolvido em: Java SE"+
-            "<br/>"+"Ultima Atualizacao: 13.02.2021_____________PaySell Versao 1.1.0</html>", SwingConstants.CENTER);   
+            "<br/>"+"Ultima Atualizacao: EM CURSO_____________PaySell Versao 1.2.0</html>", SwingConstants.CENTER);   
         add(paysell);     
         paysell.setBounds(210,90,400,250);
         add(infoColorPanel);
@@ -598,7 +597,7 @@ public class MenuGestor extends JFrame implements ActionListener{
             if (Files.exists(Paths.get("src/Files/Carros.dat"))){ 
                 try {
                     if(!GuardarCarros.mostrar().isEmpty()){
-                        ArrayList<Carros> procurar = GuardarCarros.mostrar();
+                        ArrayList<Carro> procurar = GuardarCarros.mostrar();
                         JOptionPane.showMessageDialog(null, GuardarCarros.procurar(procurar, searchBox.getText()));
                     }
                 } catch (IOException | ClassNotFoundException ex) {
@@ -609,8 +608,8 @@ public class MenuGestor extends JFrame implements ActionListener{
             if (Files.exists(Paths.get("src/Files/Carros.dat"))){ 
                 try {
                     if(!GuardarCarros.mostrar().isEmpty()){
-                        ArrayList<Carros> remover = GuardarCarros.mostrar();
-                        String id = JOptionPane.showInputDialog("Modelo do Carro: ");
+                        ArrayList<Carro> remover = GuardarCarros.mostrar();
+                        String id = JOptionPane.showInputDialog("Chassi do Carro: ");
                         GuardarCarros.apagar(remover, id);
                     }
                 } catch (IOException | ClassNotFoundException ex) {
@@ -655,7 +654,7 @@ public class MenuGestor extends JFrame implements ActionListener{
             if(Files.exists(Paths.get("src/Files/Vendas.dat"))){
                 try {
                     if(!GuardarVendas.mostrar().isEmpty()){
-                        ArrayList <Vendas> vendas = new ArrayList<>();
+                        ArrayList <Venda> vendas = new ArrayList<>();
                         vendas = GuardarVendas.mostrar();
                         Metodos.relatorioVendas(vendas, "RelatorioVendas");
                     }
@@ -664,7 +663,7 @@ public class MenuGestor extends JFrame implements ActionListener{
                 }
             }
         }else if(ae.getSource()== paymentReport){
-            ArrayList <Salarios> salarios = new ArrayList<>();
+            ArrayList <Salario> salarios = new ArrayList<>();
             if(Files.exists(Paths.get("src/Files/Salarios.dat"))){
                 try {
                     if(!GuardarSalarios.mostrar().isEmpty()){                      
@@ -679,7 +678,7 @@ public class MenuGestor extends JFrame implements ActionListener{
             if(Files.exists(Paths.get("src/Files/Carros.dat"))){
                 try {
                     if(!GuardarCarros.mostrar().isEmpty()){
-                        ArrayList <Carros> carro = new ArrayList<>();
+                        ArrayList <Carro> carro = new ArrayList<>();
                         carro = GuardarCarros.mostrar();
                         Metodos.relatorioStock(carro, "RelatorioStock");
                     }
@@ -713,17 +712,25 @@ public class MenuGestor extends JFrame implements ActionListener{
         }else if(ae.getSource()== deleteAcc){
             if (Files.exists(Paths.get("src/Files/Gestor.dat"))){ 
                 try {
+                    ArrayList<Gestor> remover = new ArrayList();
                     if(!GuardarGestor.mostrar().isEmpty()){
-                        ArrayList<Gestor> remover = GuardarGestor.mostrar();
-                        String key = JOptionPane.showInputDialog("Insira o ID: ");
-                        if (GuardarGestor.apagar(remover, key)){
+                        remover = GuardarGestor.mostrar();
+                    }
+                    String key = JOptionPane.showInputDialog("Insira o ID: ");
+                        if(remover.remove(GuardarGestor.procurar(remover, key))){
+                            GuardarGestor.guardar(remover);
                             JOptionPane.showMessageDialog(null, "Conta Removida","INFO",JOptionPane.PLAIN_MESSAGE);
                             dispose();
                             new Login();
-                        }else{
+                        }
+                        /*if (GuardarGestor.apagar(remover, key)){
+                            JOptionPane.showMessageDialog(null, "Conta Removida","INFO",JOptionPane.PLAIN_MESSAGE);
+                            
+                            dispose();
+                            new Login();
+                        }*/else{
                             JOptionPane.showMessageDialog(null, "Operacao sem sucesso","ERRO",JOptionPane.ERROR_MESSAGE);
                         }
-                    }
                 } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(MenuGestor.class.getName()).log(Level.SEVERE, null, ex);
                 }

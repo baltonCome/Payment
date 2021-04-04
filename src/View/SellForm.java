@@ -2,8 +2,8 @@ package View;
 
 import Controller.GuardarCarros;
 import Controller.GuardarVendas;
-import Models.Carros;
-import Models.Vendas;
+import Models.Carro;
+import Models.Venda;
 import ModelsDao.Metodos;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -48,8 +48,8 @@ public class SellForm extends JFrame implements ActionListener {
     JLabel modelo = new JLabel("Modelo do Veiculo");
     JTextField modeloField = new JTextField();
     
-    JLabel quantidade = new JLabel("Quantidade");
-    JTextField quantidadeField = new JTextField();
+    JLabel chassi = new JLabel("Chassi");
+    JTextField chassiField = new JTextField();
     
     JLabel nomeCliente = new JLabel("Nome do Cliente");
     JTextField clienteField = new  JTextField();
@@ -65,8 +65,8 @@ public class SellForm extends JFrame implements ActionListener {
     JLabel cor = new JLabel("COR DO VEICULO: ");
     JLabel getCor = new JLabel();
     
-    JLabel preco = new JLabel("PRECO POR UNIDADE: ");
-    JLabel getPreco = new JLabel();
+    JLabel comprador = new JLabel("COMPRADOR: ");
+    JLabel getComprador = new JLabel();
     
     JLabel total = new JLabel("VALOR DA COMPRA: ");
     JLabel getTotal = new JLabel();
@@ -94,10 +94,10 @@ public class SellForm extends JFrame implements ActionListener {
         modeloField.setBounds(550,70,200,20);
         add(modeloField);
        
-        quantidade.setBounds(250,110,200,20);
-        add(quantidade);
-        quantidadeField.setBounds(250,130,200,20);
-        add(quantidadeField);
+        chassi.setBounds(250,110,200,20);
+        add(chassi);
+        chassiField.setBounds(250,130,200,20);
+        add(chassiField);
         
         nomeCliente.setBounds(550,110,200,20);
         add(nomeCliente);
@@ -114,10 +114,10 @@ public class SellForm extends JFrame implements ActionListener {
         getCor.setBounds(650,210,100,20);
         add(getCor);
         
-        preco.setBounds(250,250,150,20);
-        add(preco);
-        getPreco.setBounds(400,250,100,20);
-        add(getPreco);
+        comprador.setBounds(250,250,150,20);
+        add(comprador);
+        getComprador.setBounds(400,250,100,20);
+        add(getComprador);
         
         total.setBounds(500,250,150,20);
         add(total);
@@ -137,7 +137,7 @@ public class SellForm extends JFrame implements ActionListener {
         add(confirmar);
         
         ano.setVisible(false);
-        preco.setVisible(false);
+        comprador.setVisible(false);
         total.setVisible(false);
         cor.setVisible(false);
         confirmar.setVisible(false);
@@ -160,6 +160,7 @@ public class SellForm extends JFrame implements ActionListener {
         
         colunas.addColumn("Marca");
         colunas.addColumn("Modelo");
+        colunas.addColumn("Chassi");
         
         tabela = new JTable(colunas) {
             @Override
@@ -184,7 +185,7 @@ public class SellForm extends JFrame implements ActionListener {
         for(int i = 0; i < tabela.getColumnCount(); i++){
             TableColumn size = tabela.getColumnModel().getColumn(i);
             size.setPreferredWidth(100);
-            size.setMaxWidth(150);
+            size.setMaxWidth(120);
         }
         tabela.setAutoResizeMode(AUTO_RESIZE_OFF);
         scroll = new JScrollPane(tabela);
@@ -199,7 +200,7 @@ public class SellForm extends JFrame implements ActionListener {
     private void dadosTabelaCar() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Carros> cars = new ArrayList<>();
+        ArrayList <Carro> cars = new ArrayList<>();
         try {           
             cars = GuardarCarros.mostrar();
             if(!cars.isEmpty()){
@@ -207,6 +208,7 @@ public class SellForm extends JFrame implements ActionListener {
                     model.addRow(new String[]{
                         cars.get(i).getMarca(),
                         cars.get(i).getModelo(),
+                        cars.get(i).getChassi()
                     }); 
                 }
             }            
@@ -216,8 +218,7 @@ public class SellForm extends JFrame implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent ae){
-        ArrayList<Carros> carro = new ArrayList<>();
-        double precoF = 0;
+        ArrayList<Carro> carro = new ArrayList<>();
         if(ae.getSource()== processar){
             if (Files.exists(Paths.get("src/Files/Carros.dat"))){ 
                 try {
@@ -225,19 +226,15 @@ public class SellForm extends JFrame implements ActionListener {
                         carro = GuardarCarros.mostrar();
                     }
                     if (GuardarCarros.podeVender(carro, marcaField.getText(), modeloField.getText(), 
-                            Integer.parseInt(quantidadeField.getText())) != -1){
+                            chassiField.getText()) != -1){
                         getAno.setText(""+carro.get(GuardarCarros.podeVender(carro, marcaField.getText(),
-                            modeloField.getText(), Integer.parseInt(quantidadeField.getText()))).getAno());
+                            modeloField.getText(), chassiField.getText())).getAno());
                         getCor.setText(carro.get(GuardarCarros.podeVender(carro, marcaField.getText(),
-                            modeloField.getText(), Integer.parseInt(quantidadeField.getText()))).getCor());
-                        getPreco.setText(""+carro.get(GuardarCarros.podeVender(carro, marcaField.getText(),
-                            modeloField.getText(), Integer.parseInt(quantidadeField.getText()))).getPreco());
-                        precoF = carro.get(GuardarCarros.podeVender(carro, marcaField.getText(), modeloField.getText(),
-                            Integer.parseInt(quantidadeField.getText()))).getPreco()*Integer.parseInt(quantidadeField.getText());
-                        Metodos.preco = precoF;
-                        getTotal.setText(""+precoF);
+                            modeloField.getText(), chassiField.getText())).getCor());
+                        getComprador.setText(""+clienteField.getText());
+                        getTotal.setText(""+carro.get(GuardarCarros.podeVender(carro, marcaField.getText(), modeloField.getText(), chassiField.getText())).getPreco());
                         ano.setVisible(true);
-                        preco.setVisible(true);
+                        comprador.setVisible(true);
                         total.setVisible(true);
                         cor.setVisible(true);
                         confirmar.setVisible(true);
@@ -252,18 +249,19 @@ public class SellForm extends JFrame implements ActionListener {
                 if(!GuardarCarros.mostrar().isEmpty()){
                     carro = GuardarCarros.mostrar();
                 }
-                GuardarCarros.vendido(carro, marcaField.getText(), modeloField.getText(), Integer.parseInt(quantidadeField.getText()));
-                ArrayList <Vendas> venda = new ArrayList<>();
+                GuardarCarros.vendido(carro, chassiField.getText());
+                ArrayList <Venda> venda = new ArrayList<>();
                 if(Files.exists(Paths.get("src/Files/Vendas.dat"))){
                     if(!GuardarVendas.mostrar().isEmpty()){
                         venda = GuardarVendas.mostrar();
                     }
                 }       
-                Vendas vend = new Vendas(Metodos.vendaId(marcaField.getText(), modeloField.getText()),clienteField.getText(),marcaField.getText(),
-                    modeloField.getText(),getAno.getText(),getCor.getText(),Metodos.preco,Integer.parseInt(quantidadeField.getText()),Metodos.currentUser);
+                Venda vend = new Venda(Metodos.vendaId(marcaField.getText(), modeloField.getText()),clienteField.getText(),marcaField.getText(),
+                    modeloField.getText(),getAno.getText(),getCor.getText(),Double.parseDouble(getTotal.getText()),chassiField.getText(),Metodos.currentUser);
                 venda.add(vend);
                 GuardarVendas.guardar(venda);
                 JOptionPane.showMessageDialog(null, "Carro vendido");
+                Metodos.comprovativoVenda(vend, "Comprovativo de Venda");
                 dispose();
                 new MenuVendedor().Vendas();
             }catch(IOException | ClassNotFoundException ex){

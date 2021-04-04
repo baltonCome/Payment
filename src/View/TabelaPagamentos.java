@@ -17,7 +17,7 @@ import static javax.swing.JTable.AUTO_RESIZE_OFF;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import Models.Salarios;
+import Models.Salario;
 import Controller.GuardarSalarios;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -114,7 +114,7 @@ public class TabelaPagamentos extends JFrame implements ActionListener {
     private void dadosTabelar() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Salarios> salary = new ArrayList<>();
+        ArrayList <Salario> salary = new ArrayList<>();
         try {           
             salary = GuardarSalarios.mostrar();
             if(!salary.isEmpty()){

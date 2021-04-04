@@ -3,7 +3,7 @@ package Models;
 import java.io.Serializable;
 
 
-public class Salarios implements Serializable {
+public class Salario implements Serializable {
     
     String nome;
     private double salarioBase;
@@ -17,10 +17,10 @@ public class Salarios implements Serializable {
     private double irps;
     private double salarioLiquido;
     
-    public Salarios(){
+    public Salario(){
     }
     
-    public Salarios(String nome, double salarioBase, double bonus, String cargo, double faltas, double horasExtras, double subsidioFuneral, double assistenciaMedica, double aposentacao, double irps, double salarioLiquido) {
+    public Salario(String nome, double salarioBase, double bonus, String cargo, double faltas, double horasExtras, double subsidioFuneral, double assistenciaMedica, double aposentacao, double irps, double salarioLiquido) {
         this.nome = nome;
         this.salarioBase = salarioBase;
         this.bonus = bonus;

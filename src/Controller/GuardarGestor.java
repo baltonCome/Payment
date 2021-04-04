@@ -40,104 +40,91 @@ public class GuardarGestor {
     
     public static boolean alterarSenha(ArrayList<Gestor> gestor, String username, String senha) throws IOException{
 
-        boolean found = false;
         if (Files.exists(Paths.get("src/Files/Gestor.dat"))) {
             if (!gestor.isEmpty()) {
                 try {
-                    int i = 0;
-                    for (i = 0; i < gestor.size(); i++) {
-                        if (username.equalsIgnoreCase(gestor.get(i).getNomeUsuario())) {
-                            found = true;
-                            break;
+                    for (int i = 0; i < gestor.size(); i++) {
+                        if (username.equalsIgnoreCase(gestor.get(i).getNomeUsuario()) || username.equalsIgnoreCase(gestor.get(i).getId())) {
+                            gestor.get(i).setSenha(senha);
+                            return true;
                         }
-                    }
-                    if (found){
-                        gestor.get(i).setSenha(senha);
                     }
                     guardar(gestor);
                 }catch(IOException e){
                 }
             }
         }
-        return found;
+        return false;
     }
 
     
     public static boolean isGestor(ArrayList<Gestor> gestor, String username, char[] jPassField){      
-        boolean matches = false;
         
         String concat ="";
         for (int i = 0; i<jPassField.length; i++){
             concat +=jPassField[i];
         }
-       
+
         if(Files.exists(Paths.get("src/Files/Gestor.dat"))){
             if(!gestor.isEmpty()){
                 try{
                     for(int i = 0; i<gestor.size(); i++){
-                        if(username.equalsIgnoreCase(gestor.get(i).getNomeUsuario()) && concat.equals(gestor.get(i).getSenha())){
-                            matches = true;
+                        if((username.equalsIgnoreCase(gestor.get(i).getNomeUsuario()) || username.equalsIgnoreCase(gestor.get(i).getId()))
+                                && concat.equals(gestor.get(i).getSenha())){
+                            return true;
                         }
                     }
                 }catch(Exception e){
                 }
             }
         }
-        return matches;
+        return false;
     }
     
     public static int editar(ArrayList<Gestor> gestor, String key){
         
-        int procurado = -1;
         if(Files.exists(Paths.get("src/Files/Gestor.dat"))){
             if(!gestor.isEmpty()){
                 for (int i = 0; i< gestor.size(); i++){
-                    if (key.equalsIgnoreCase(gestor.get(i).getNome()) || key.equalsIgnoreCase(gestor.get(i).getId())){
-                        procurado = i;
-                        break;
+                    if (key.equalsIgnoreCase(gestor.get(i).getNomeUsuario()) || key.equalsIgnoreCase(gestor.get(i).getId())){
+                        return i;
                     }
                 }
             }
         }
-        return procurado;
+        return -1;
     }
     
     public static boolean apagar(ArrayList<Gestor> gestor, String key){
 
-        boolean found = false;
         if (Files.exists(Paths.get("src/Files/Gestor.dat"))) {
             if (!gestor.isEmpty()) {
                 try {
-                    Gestor procurado;
                     for (int i = 0; i < gestor.size(); i++) {
                         if (key.equalsIgnoreCase(gestor.get(i).getId())) {
-                            found = true;
-                            procurado = gestor.get(i);
-                            gestor.remove(procurado);                         
-                            break;
-                        }
+                            gestor.remove(gestor.get(i));         
+                            guardar(gestor);
+                            return true;
+                        } 
                     }
-                    guardar(gestor);
                 } catch (HeadlessException | IOException e) {
                 }
             }
         }
-        return found;
+        return false;
     }
     
     public static Gestor procurar(ArrayList<Gestor> gestor, String key){
 
-        Gestor procurado = null;
         if (Files.exists(Paths.get("src/Files/Gestor.dat"))) {
             if (!gestor.isEmpty()) {
                 for (int i = 0; i < gestor.size(); i++) {
                     if (key.equalsIgnoreCase(gestor.get(i).getId())) {
-                        procurado = gestor.get(i);
-                        break;
+                        return gestor.get(i);
                     }
                 }
             }
         }
-        return procurado;
+        return null;
     }
 }

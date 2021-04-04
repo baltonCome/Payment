@@ -3,7 +3,7 @@ package View;
 import Controller.GuardarFuncionario;
 import Controller.GuardarSalarios;
 import Models.Funcionario;
-import Models.Salarios;
+import Models.Salario;
 import ModelsDao.Metodos;
 import static View.MenuGestor.allDone;
 import java.awt.Color;
@@ -155,13 +155,13 @@ public class PayRollForm extends JFrame{
         processar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 try{
-                    ArrayList <Salarios> pay = new ArrayList<>();    
+                    ArrayList <Salario> pay = new ArrayList<>();    
                     if(Files.exists(Paths.get("src/Files/Salarios.dat"))){ 
                         if(!GuardarSalarios.mostrar().isEmpty()){
                             pay = GuardarSalarios.mostrar();
                         }
                     }
-                    Salarios sal = new Salarios(nomeField.getText(), Double.parseDouble(salarioField.getText()), 
+                    Salario sal = new Salario(nomeField.getText(), Double.parseDouble(salarioField.getText()), 
                         Metodos.bonus(Double.parseDouble(salarioField.getText())),cargoField.getText(),
                         Metodos.faltas(Integer.parseInt(faltasField.getText()), Double.parseDouble(salarioField.getText())),
                         Metodos.horasExtras(Integer.parseInt(horasField.getText()), Double.parseDouble(salarioField.getText())),

@@ -17,7 +17,7 @@ import static javax.swing.JTable.AUTO_RESIZE_OFF;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import Models.Vendas;
+import Models.Venda;
 import Controller.GuardarVendas;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -54,7 +54,7 @@ public class TabelaVendas extends JFrame implements ActionListener {
         colunas.addColumn("Ano de Fabrico");
         colunas.addColumn("Cor");
         colunas.addColumn("Valor da Venda");
-        colunas.addColumn("Quantidade");
+        colunas.addColumn("Chassi");
         colunas.addColumn("Nome do Vendedor");
         
         tabela = new JTable(colunas) {
@@ -112,7 +112,7 @@ public class TabelaVendas extends JFrame implements ActionListener {
     private void dadosTabela() throws ClassNotFoundException{
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         model.setNumRows(0);
-        ArrayList <Vendas> vendas = new ArrayList<>();
+        ArrayList <Venda> vendas = new ArrayList<>();
         try {           
             vendas = GuardarVendas.mostrar();
             if(!vendas.isEmpty()){
@@ -125,7 +125,7 @@ public class TabelaVendas extends JFrame implements ActionListener {
                         String.valueOf(vendas.get(i).getAnoCarro()),
                         vendas.get(i).getCorCarro(),
                         String.valueOf(vendas.get(i).getPrecoCarro()),
-                        String.valueOf(vendas.get(i).getQuantidadeCarro()),
+                        vendas.get(i).getChassi(),
                         vendas.get(i).getNomeVendedor()
                     }); 
                 }

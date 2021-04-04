@@ -1,4 +1,4 @@
-package View;
+ package View;
 
 import Controller.GuardarFuncionario;
 import Models.Funcionario;

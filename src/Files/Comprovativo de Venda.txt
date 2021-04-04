@@ -1,0 +1,21 @@
+PaySell
+Maputo
+
+
+
+==================================
+ID da Venda: FM20
+Nome do Cliente: JOse pinhos
+Marca do Carro: ford 
+Modelo do Carro: mustang
+Ano Fabrico: 2012
+Cor Do Carro: Azul
+Preco do Carro: 1200000.0
+Chassi: fong2012azul4
+Vendedor: j
+
+
+
+==================================
+Fri Apr 02 13:09:31 PDT 2021
+Operador: j

@@ -1,8 +1,8 @@
 package ModelsDao;
 
-import Models.Carros;
-import Models.Salarios;
-import Models.Vendas;
+import Models.Carro;
+import Models.Salario;
+import Models.Venda;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,9 +18,8 @@ import java.util.Date;
 public class Metodos {
     
     public static String currentUser = "";
-    public static double preco = 0;
     
-    ArrayList<Carros> carro = new ArrayList<>();
+    ArrayList<Carro> carro = new ArrayList<>();
     
     public static int codigo() throws IOException{
         
@@ -58,7 +57,7 @@ public class Metodos {
     }
     
         
-    public static void relatorioVendas(ArrayList<Vendas> venda, String titulo) throws IOException{
+    public static void relatorioVendas(ArrayList<Venda> venda, String titulo) throws IOException{
         
         String rel = "PaySell\nMaputo\n\n\n"+"\n==================================\n"+String.valueOf(venda)+
                 "\n==================================\n"+new Date(System.currentTimeMillis()).toString()+"\nOperador: "+currentUser;
@@ -74,7 +73,7 @@ public class Metodos {
         open(titulo);
     }
     
-    public static void relatorioPagamentos(ArrayList<Salarios> salario, String titulo) throws IOException{
+    public static void relatorioPagamentos(ArrayList<Salario> salario, String titulo) throws IOException{
         
         String rel = "PaySell\nMaputo\n\n\n"+"\n==================================\n"+String.valueOf(salario)+
                 "\n==================================\n"+new Date(System.currentTimeMillis()).toString()+"\nOperador: "+currentUser;
@@ -91,7 +90,7 @@ public class Metodos {
         open(titulo);
     }
     
-    public static void relatorioStock(ArrayList<Carros> carro, String titulo) throws IOException{
+    public static void relatorioStock(ArrayList<Carro> carro, String titulo) throws IOException{
         
         String rel = "PaySell\nMaputo\n\n\n"+"\n==================================\n"+String.valueOf(carro)+
                 "\n==================================\n"+new Date(System.currentTimeMillis()).toString()+"\nOperador: "+currentUser;
@@ -100,6 +99,22 @@ public class Metodos {
            f.delete();
         }
         
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/Files/"+titulo+".txt",true));
+        bw.write(rel);
+        bw.flush();
+        bw.close();
+        
+        open(titulo);
+    }
+    
+    public static void comprovativoVenda (Object venda, String titulo) throws IOException{
+        
+        String rel = "PaySell\nMaputo\n\n\n"+"\n==================================\n"+String.valueOf(venda)+
+                "\n==================================\n"+new Date(System.currentTimeMillis()).toString()+"\nOperador: "+currentUser;
+        if(Files.exists(Paths.get("src/Files/"+titulo+".txt"))){
+           File f = new File("src/Files/"+titulo+".txt");
+           f.delete();
+        }
         BufferedWriter bw = new BufferedWriter(new FileWriter("src/Files/"+titulo+".txt",true));
         bw.write(rel);
         bw.flush();
@@ -194,5 +209,10 @@ public class Metodos {
     
     public static double irps(double salario){
         return -((salario*15)/100);
+    }
+    
+    public static String chassiGen(String marca, String modelo, String ano, String cor) throws IOException{
+        return marca.substring(0,2).toUpperCase()+modelo.substring(modelo.length()-2, modelo.length()).toUpperCase()
+                +ano+cor.substring(modelo.length()-2,modelo.length()).toUpperCase()+codigo();
     }
 }

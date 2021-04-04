@@ -1,6 +1,6 @@
 package Controller;
 
-import Models.Carros;
+import Models.Carro;
 import java.awt.HeadlessException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 public class GuardarCarros implements Serializable {
     
-    public static void guardar (ArrayList <Carros> carros ) throws IOException{
+    public static void guardar (ArrayList <Carro> carros ) throws IOException{
         
         if (!carros.isEmpty()){
             try(FileOutputStream fos = new FileOutputStream("src/Files/Carros.dat")){
@@ -31,24 +31,24 @@ public class GuardarCarros implements Serializable {
         }
     }
      
-    public static ArrayList<Carros> mostrar () throws IOException, ClassNotFoundException{
+    public static ArrayList<Carro> mostrar () throws IOException, ClassNotFoundException{
         
         try (FileInputStream fis = new FileInputStream("src/Files/Carros.dat")){
             try(ObjectInputStream ois = new ObjectInputStream(fis)){
-                return (ArrayList<Carros>) ois.readObject();
+                return (ArrayList<Carro>) ois.readObject();
             }
         }
     } 
     
-    public static void apagar(ArrayList<Carros> carros, String modelo){
+    public static void apagar(ArrayList<Carro> carros, String chassi){
 
         boolean found = false;
         if (Files.exists(Paths.get("src/Files/Carros.dat"))) {
             if (!carros.isEmpty()) {
                 try {
-                    Carros procurado;
+                    Carro procurado;
                     for (int i = 0; i < carros.size(); i++) {
-                        if (modelo.equalsIgnoreCase(carros.get(i).getModelo())) {
+                        if (chassi.equalsIgnoreCase(carros.get(i).getChassi())) {
                             found = true;
                             procurado = carros.get(i);
                             carros.remove(procurado);
@@ -66,9 +66,9 @@ public class GuardarCarros implements Serializable {
         }
     }
 
-    public static Carros procurar(ArrayList<Carros> carros, String marca){
+    public static Carro procurar(ArrayList<Carro> carros, String marca){
 
-        Carros procurado = null;
+        Carro procurado = null;
         if (Files.exists(Paths.get("src/Files/Carros.dat"))) {
             if (!carros.isEmpty()) {
                 try {
@@ -84,32 +84,28 @@ public class GuardarCarros implements Serializable {
         return procurado;
     }
     
-    public static int podeVender(ArrayList<Carros> car, String marca, String modelo, int quantidade){
+    public static int podeVender(ArrayList<Carro> car, String marca, String modelo, String chassi){
         
-        int procurado = -1;
         if(Files.exists(Paths.get("src/Files/Carros.dat"))){
             if(!car.isEmpty()){
                 for (int i = 0; i< car.size(); i++){
-                    if (marca.equalsIgnoreCase(car.get(i).getMarca()) && modelo.equalsIgnoreCase(car.get(i).getModelo()) &&
-                    quantidade<=car.get(i).getQuantidade()){
-                        procurado = i;
-                        break;
+                    if (modelo.equalsIgnoreCase(car.get(i).getModelo()) && marca.equalsIgnoreCase(car.get(i).getMarca()) &&
+                            chassi.equalsIgnoreCase(car.get(i).getChassi())){
+                        return i;
                     }
                 }
             }
         }
-        return procurado;
+        return -1;
     }
     
-    public static void vendido(ArrayList<Carros> car, String marca, String modelo, int quantidade) throws IOException{
+    public static void vendido(ArrayList<Carro> car, String chassi) throws IOException{
         
         if(Files.exists(Paths.get("src/Files/Carros.dat"))){
             if(!car.isEmpty()){
                 for (int i = 0; i< car.size(); i++){
-                    if (marca.equalsIgnoreCase(car.get(i).getMarca()) && modelo.equalsIgnoreCase(car.get(i).getModelo()) &&
-                    quantidade<=car.get(i).getQuantidade()){
-                        int novaQuant = car.get(i).getQuantidade() - quantidade;
-                        car.get(i).setQuantidade(novaQuant);
+                    if (chassi.equalsIgnoreCase(car.get(i).getChassi())){
+                        car.remove(car.get(i));
                         break;
                     }
                 }guardar(car);

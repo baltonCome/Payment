@@ -1,6 +1,6 @@
 package Controller;
 
-import Models.Salarios;
+import Models.Salario;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class GuardarSalarios implements Serializable {
     
-    public static boolean guardar (ArrayList <Salarios> salarios ) throws IOException{
+    public static boolean guardar (ArrayList <Salario> salarios ) throws IOException{
         
         if (!salarios.isEmpty()){
             try(FileOutputStream fos = new FileOutputStream("src/Files/Salarios.dat")){
@@ -29,11 +29,11 @@ public class GuardarSalarios implements Serializable {
         return false;
     }
     
-      public static ArrayList<Salarios> mostrar () throws IOException, ClassNotFoundException{
+      public static ArrayList<Salario> mostrar () throws IOException, ClassNotFoundException{
         
         try (FileInputStream fis = new FileInputStream("src/Files/Salarios.dat")){
             try(ObjectInputStream ois = new ObjectInputStream(fis)){
-                return (ArrayList<Salarios>) ois.readObject();
+                return (ArrayList<Salario>) ois.readObject();
             }
         }
     } 

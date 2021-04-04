@@ -113,7 +113,9 @@ public class ChangePassForm extends JFrame implements ActionListener {
                         dispose();
                         new MenuGestor().Settings();
                     }else{
-                        
+                        System.out.println(GuardarGestor.isGestor(gestor, userField.getText(), senhaField.getPassword()));
+                        System.out.println(Metodos.matches(novaField.getPassword(), confirmarField.getPassword()));
+                        JOptionPane.showMessageDialog(null, "Operacao sem sucesso","ERRO",JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(ChangePassForm.class.getName()).log(Level.SEVERE, null, ex);

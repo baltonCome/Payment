@@ -3,24 +3,32 @@ package Models;
 import java.io.Serializable;
 
 
-public class Carros implements Serializable {
+public class Carro implements Serializable {
     
-    public Carros(){}
+    public Carro(){}
     
     private String marca;
     private String modelo;
     private int ano;
     private String cor;
     private double preco;
-    private int quantidade;
+    private String chassi;
 
-    public Carros(String marca, String modelo, int ano, String cor, double preco, int quantidade) {
+    public Carro(String marca, String modelo, int ano, String cor, double preco, String chassi) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
         this.cor = cor;
         this.preco = preco;
-        this.quantidade = quantidade;
+        this.chassi = chassi;
+    }
+
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
     }
     
     public String getMarca() {
@@ -63,16 +71,9 @@ public class Carros implements Serializable {
         this.preco = preco;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
     @Override
     public String toString() {
-        return "marca: " + marca + "\n"+"modelo: " + modelo + "\n"+"ano: " + ano + "\n"+"cor: " + cor + "\n"+"preco: " + preco + "\n"+"quantidade: " + quantidade+"\n\n\n";
+        return "marca: " + marca + "\n"+"modelo: " + modelo + "\n"+"ano: " + ano + 
+                "\n"+"cor: " + cor + "\n"+"preco: " + preco +"\n"+ "chassi: "+chassi+ "\n\n\n";
     }
 }
