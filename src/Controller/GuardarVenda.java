@@ -10,9 +10,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-
+/**
+ * Classe de Controle do Objecto Vendas
+ * @author Mr. Savagery
+ */
 public class GuardarVenda {
     
+    /**
+     * Metodo que guarda objectos de Salario
+     * @param vendas arraylist dp objecto Vendas a ser guardado
+     */
     public static void guardar (ArrayList <Vendas> vendas ) throws IOException{
         
         if (!vendas.isEmpty()){
@@ -28,6 +35,10 @@ public class GuardarVenda {
         }
     }
     
+    /**
+     * Metodo que exibe um arraylist dos objectos de Vendas
+     * @return um arraylist dos objectos de Vendas
+     */
     public static ArrayList<Vendas> mostrar () throws IOException, ClassNotFoundException{
         
         try (FileInputStream fis = new FileInputStream("src/Files/Vendas.dat")){
@@ -37,6 +48,12 @@ public class GuardarVenda {
         }
     }
     
+    /**
+     * Metodo que procura objectos de Vendas que tenham sido efectuadas por determinado vendedor
+     * @param venda recebe um arraylist dos objectos de Vendas
+     * @param username recebe um identificador que sera usado como chave para comparar o nome do Vendedor
+     * @return os objectos procurados se encontrados, caso contrario retorna null
+     */
     public static String procurar(ArrayList<Vendas> venda, String username){
 
         String procurado = null;

@@ -25,7 +25,10 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import ModelsDao.Metodos;
 
-
+/**
+ *Classe contento a interface grafica do formulario do registo do funcionario
+ * @author Mr. Savagery
+ */
 public class FuncRegisterForm extends JFrame implements ActionListener{
     
     
@@ -73,6 +76,9 @@ public class FuncRegisterForm extends JFrame implements ActionListener{
     JButton registar = new JButton("Registar");
     JButton cancelar = new JButton("Cancelar");
     
+    /**
+     * Construtor contento a GUI com o formulario do registo do funcionario
+     */
     public FuncRegisterForm(){
         
         setTitle("Registo");
@@ -163,6 +169,10 @@ public class FuncRegisterForm extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     } 
     
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== registar){

@@ -34,7 +34,10 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-
+/**
+ * Classe da interface grafica do Menu do Vendedor. Contem todos metodos e accoes referentes ao Vendedor.
+ * @author Mr. Savagery
+ */
 public class MenuVendedor extends JFrame implements ActionListener{
     
     ArrayList<String> car = new ArrayList<>();
@@ -62,6 +65,9 @@ public class MenuVendedor extends JFrame implements ActionListener{
     JTable tabela;
     JScrollPane scroll;   
     
+    /**
+     * Construtor contendo a GUI geral do Vendedor, funciona como Dashboard permitido a navegacao entre os diversos submenus do menu do Vendedor.
+     */
     public MenuVendedor() throws ClassNotFoundException{
         
         setTitle("Menu Vendedor");
@@ -122,6 +128,10 @@ public class MenuVendedor extends JFrame implements ActionListener{
         }
     }  
     
+    /**
+     * Este metodo gera uma GUI que constitui um dos submenus do Vendedor.
+     * E neste metodo que sao efectuadas todas as operacoes referentes as vendas.
+     */
     public void Vendas() throws ClassNotFoundException{
         
         searchBox.setBounds(575,5,120,25);
@@ -195,6 +205,10 @@ public class MenuVendedor extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Este metodo gera uma GUI que constitui um dos submenus do Vendedor.
+     * Contem algumas informacoes sobre o sistema.
+     */
     public void About(){
         
         JPanel upColorPanel = new JPanel();
@@ -232,6 +246,10 @@ public class MenuVendedor extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== leave){

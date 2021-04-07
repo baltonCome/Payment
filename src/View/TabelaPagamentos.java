@@ -24,7 +24,10 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 
-
+/** 
+ * CLasse da Interface grafica da tabela de pagementos
+ * @author Mr. Savagery
+ */
 public class TabelaPagamentos extends JFrame implements ActionListener {
     
     ArrayList<String> pay = new ArrayList<>();
@@ -39,6 +42,9 @@ public class TabelaPagamentos extends JFrame implements ActionListener {
     JButton fechar = new JButton("Fechar");
     JLabel payIcon = new JLabel(new ImageIcon("src/Files/Icons/folha.png"));
     
+    /**
+     * Contrutor contendo a GUI da tabela de pagementos
+     */
     public TabelaPagamentos() throws ClassNotFoundException{
         
         setTitle("Salarios");
@@ -138,6 +144,10 @@ public class TabelaPagamentos extends JFrame implements ActionListener {
         }
     }  
     
+    /**
+     * Metodo contendo evento da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== fechar){

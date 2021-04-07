@@ -32,7 +32,10 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-
+/**
+ * Classe da interface grafica das vendas
+ * @author Mr. Savagery
+ */
 public class SellForm extends JFrame implements ActionListener {
     
     ArrayList <String> car = new ArrayList<>();
@@ -76,6 +79,9 @@ public class SellForm extends JFrame implements ActionListener {
     JTable tabela;
     JScrollPane scroll; 
     
+    /**
+     * Contrutor contendo a GUI das vendas
+     */
     public SellForm() throws ClassNotFoundException{
         
         setTitle("Menu Vendedor");
@@ -216,6 +222,10 @@ public class SellForm extends JFrame implements ActionListener {
         }
     }  
     
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         ArrayList<Carros> carro = new ArrayList<>();
@@ -246,8 +256,10 @@ public class SellForm extends JFrame implements ActionListener {
             }
         }else if(ae.getSource()== confirmar){
             try{
-                if(!GuardarCarro.mostrar().isEmpty()){
-                    carro = GuardarCarro.mostrar();
+                if(Files.exists(Paths.get("src/Files/Carros.dat"))){
+                    if(!GuardarCarro.mostrar().isEmpty()){
+                        carro = GuardarCarro.mostrar();
+                    }
                 }
                 GuardarCarro.vendido(carro, chassiField.getText());
                 ArrayList <Vendas> venda = new ArrayList<>();

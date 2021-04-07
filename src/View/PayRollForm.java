@@ -25,7 +25,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
+/**
+ * Classe da interface grafica do processamento de pagamentos
+ * @author Mr. Savagery
+ */
 public class PayRollForm extends JFrame{
     
     JLabel nome = new JLabel("Nome: ");
@@ -64,10 +67,21 @@ public class PayRollForm extends JFrame{
     
     ArrayList <Funcionario> funcionario = new ArrayList<>();
     
+    /**
+     * Construtor vazio da classe
+     */
     public PayRollForm(){}
-    
-    boolean paid;
-    
+      
+    /**
+     * Contrutor contendo a GUI dos pagamentos
+     * @param name recebe o nome do objecto funcionario e coloca na JtextField do nome
+     * @param ident recebe o ID do objecto funcionario e coloca na JtextField do ID
+     * @param chair recebe o cargo do objecto funcionario e coloca na JtextField do cargo
+     * @param salary recebe o salario do objecto funcionario e coloca na JtextField do salario
+     * @param bank recebe o banco do objecto funcionario e coloca na JtextField do Banco 
+     * @param account recebe o numero da conta do objecto funcionario e coloca na JtextField do Numero da conta
+     * @see MenuGestor
+     */
     public PayRollForm(String name, String ident,String chair, double salary, String bank, String account){
         
   
@@ -146,8 +160,6 @@ public class PayRollForm extends JFrame{
         painel2.setBounds(40,130,555,30);
         add(painel);
         add(painel2);
-        
-        paid =  false;
         
         pack();
         setLocationRelativeTo(null);

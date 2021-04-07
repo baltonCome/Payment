@@ -4,18 +4,18 @@ Maputo
 
 
 ==================================
-ID da Venda: FM20
-Nome do Cliente: JOse pinhos
-Marca do Carro: ford 
-Modelo do Carro: mustang
-Ano Fabrico: 2012
-Cor Do Carro: Azul
-Preco do Carro: 1200000.0
-Chassi: fong2012azul4
-Vendedor: j
+ID da Venda: NS9
+Nome do Cliente: Jorge
+Marca do Carro: Nissan
+Modelo do Carro: skyLine
+Ano Fabrico: 2006
+Cor Do Carro: Pretp
+Preco do Carro: 443244.0
+Chassi: 1
+Vendedor: J
 
 
 
 ==================================
-Fri Apr 02 13:09:31 PDT 2021
-Operador: j
+Wed Apr 07 15:57:51 PDT 2021
+Operador: J

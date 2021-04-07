@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import Models.Carros;
 import Controller.GuardarCarro;
-import ModelsDao.Metodos;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -20,7 +19,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
+/**
+ * Classe da interface grafica para o registo de veiculos
+ * @author Mr. Savagery
+ */
 public class CarRegisterForm extends JFrame implements ActionListener{
     
     
@@ -48,6 +50,9 @@ public class CarRegisterForm extends JFrame implements ActionListener{
     JPanel painel = new JPanel();
     JLabel carRegister = new JLabel("REGISTAR VEICULO");
     
+    /**
+     * Construtor contento a GUI com o formulario para o registo de veiculos
+     */
     public CarRegisterForm(){
         
         setTitle("Registo de Veiculos");
@@ -108,6 +113,10 @@ public class CarRegisterForm extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== guardar){
@@ -117,6 +126,11 @@ public class CarRegisterForm extends JFrame implements ActionListener{
                     if(!GuardarCarro.mostrar().isEmpty()){
                         cars = GuardarCarro.mostrar();
                     }
+                }
+                if(!GuardarCarro.uniqueChassi(cars, chassiField.getText())){
+                    JOptionPane.showMessageDialog(null, "Chassi Ja Existente, verifique e tente novamente");
+                    dispose();
+                    new CarRegisterForm();
                 }
                 Carros car = new Carros(marcaField.getText(),modeloField.getText(),Integer.parseInt(anoField.getText()),
                     corField.getText(),Double.parseDouble(precoField.getText()),chassiField.getText());

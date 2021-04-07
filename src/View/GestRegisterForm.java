@@ -23,8 +23,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
-
+/**
+ * Classe contento a interface grafica do formulario do registo do gestor
+ * @author Mr. Savagery
+ */
 public class GestRegisterForm extends JFrame implements ActionListener{
     
     
@@ -60,6 +62,9 @@ public class GestRegisterForm extends JFrame implements ActionListener{
     JButton registar = new JButton("Registar");
     JButton cancelar = new JButton("Cancelar");
     
+    /**
+     * Construtor contento a GUI com o formulario do registo do gestor
+     */
     public GestRegisterForm(){
         
         setTitle("Registo");
@@ -137,6 +142,10 @@ public class GestRegisterForm extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== registar){

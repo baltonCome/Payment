@@ -20,7 +20,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
+/**
+ * Classe contento a interface grafica do formulario de atualizacao de dados do gestor
+ * @author Mr. Savagery
+ */
 public class GestUpdateForm extends JFrame implements ActionListener {
     
     JLabel nome = new JLabel("Nome Completo: ");
@@ -47,6 +50,11 @@ public class GestUpdateForm extends JFrame implements ActionListener {
     
     int pos = 0;
     
+    /**
+     * Contrutor contento a GUI do formulario de atualizacao de dados do gestor
+     * @param posicao reserva a posicao do objecto Gestor a ser atualizado
+     * @see MenuGestor
+     */
     public GestUpdateForm(int posicao){
         
         pos = posicao;
@@ -99,6 +107,10 @@ public class GestUpdateForm extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== atualizar){

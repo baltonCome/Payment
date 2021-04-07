@@ -28,7 +28,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
+/**
+ * Classe da Interface Grafica do Login e MainClass
+ * @author Mr. Savagery
+ */
 public class Login extends JFrame implements ActionListener{
     
     ArrayList <Gestor> gestor = new ArrayList<>();
@@ -43,6 +46,9 @@ public class Login extends JFrame implements ActionListener{
     JPasswordField passField = new JPasswordField();
     JPanel painel = new JPanel();
     
+    /**
+     * Contrutor contendo a GUI da tabela do login
+     */
     public Login(){
         
         setTitle("Login");
@@ -90,6 +96,10 @@ public class Login extends JFrame implements ActionListener{
         }
     }
     
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== entrar){
@@ -100,7 +110,7 @@ public class Login extends JFrame implements ActionListener{
                         JOptionPane.showMessageDialog(null,"Bem Vindo "+userField.getText()+
                             ", \npara poder ter acesso a todas as Funcionalidades do sistema, \ncertifique-se de registar um funcionario "+
                             "\ncom o cargo de vendedor para que tenha acesso ao \nsistema e possa efectuar vendas."+
-                            "\nRegiste tambem veiculos a serem vendidos!", "PRIMEIRO LOGIN", PLAIN_MESSAGE);
+                            "\nRegiste tambem veiculos a serem vendidos!", "Ausencia de ficheiros importantes", PLAIN_MESSAGE);
                         dispose();
                     }
                     new MenuGestor().Funcionarios();
@@ -135,6 +145,9 @@ public class Login extends JFrame implements ActionListener{
         }
     }
     
+    /**
+     * Main Class do programa
+     */
     public static void main(String[]args){
         new Login();
     }

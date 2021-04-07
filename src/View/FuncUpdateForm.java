@@ -24,7 +24,10 @@ import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
+/**
+ * Classe contento a interface grafica do formulario de atualizacao de dados do funcionario
+ * @author Mr. Savagery
+ */
 public class FuncUpdateForm extends JFrame implements ActionListener {
     
     
@@ -74,6 +77,11 @@ public class FuncUpdateForm extends JFrame implements ActionListener {
     
     int posicao = 0;
     
+    /**
+     * Contrutor contento a GUI do formulario de atualizacao de dados do funcionario
+     * @param pos reserva a posicao do objecto Funcionario a ser atualizado
+     * @see MenuGestor
+     */
     public FuncUpdateForm(int pos){
         
         posicao = pos;
@@ -165,7 +173,10 @@ public class FuncUpdateForm extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
     }
     
-    
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== registar){

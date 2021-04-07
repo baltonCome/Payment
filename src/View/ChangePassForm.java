@@ -23,7 +23,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
+/**
+ * Classe da interface grafica do formulario para alteracao da senha
+ * @author Mr. Savagery
+ */
 public class ChangePassForm extends JFrame implements ActionListener {
     
     JLabel user = new JLabel("Nome do usuario/ID");
@@ -43,6 +46,9 @@ public class ChangePassForm extends JFrame implements ActionListener {
     JPanel painel = new JPanel();
     JLabel dados = new JLabel("ALTERACAO DA SENHA");
     
+    /**
+     * Construtor contento a GUI com o formulario para alteracao da senha
+     */
     public ChangePassForm(){
         
         setTitle("Alterar Senha");
@@ -96,6 +102,10 @@ public class ChangePassForm extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== confirmar){

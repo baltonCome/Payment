@@ -12,10 +12,17 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
+/**
+ * Classe de controle do objecto funcionario
+ * @author Mr. Savagery
+ */
 public class GuardarFuncionario {
  
-    public static void guardar (ArrayList <Funcionario> funcionario ) throws IOException{
+    /**
+     * Metodo que guarda objectos de Funcionario
+     * @param funcionario arraylist dp objecto Funcionario a ser guardado
+     */
+    public static boolean guardar (ArrayList <Funcionario> funcionario ) throws IOException{
         
         if (!funcionario.isEmpty()){
             try(FileOutputStream fos = new FileOutputStream("src/Files/Funcionario.dat")){
@@ -25,11 +32,18 @@ public class GuardarFuncionario {
                     oos.close();
                     fos.flush();
                     fos.close();
+                    return true;
                 }
             }
         }
+        return false;
     }
     
+    /**
+     * Metodo que exibe um arraylist dos objectos de Funcionario
+     * @return um arraylist dos objectos de Funcionario
+     * 
+     */
     public static ArrayList<Funcionario> mostrar () throws IOException, ClassNotFoundException{
         
         try (FileInputStream fis = new FileInputStream("src/Files/Funcionario.dat")){
@@ -39,6 +53,11 @@ public class GuardarFuncionario {
         }
     }
     
+    /**
+     * Metodo que elimina determinado objecto Funcionario
+     * @param funcionario recebe um arraylist dos objectos de Funcionario
+     * @param username recebe um identificador que sera usado como chave para eliminar determinado objecto
+     */
     public static void apagar(ArrayList<Funcionario> funcionario, String username){
 
         boolean found = false;
@@ -59,16 +78,22 @@ public class GuardarFuncionario {
                     }else{
                         JOptionPane.showMessageDialog(null, "Funcionario Eliminado","INFO",JOptionPane.PLAIN_MESSAGE);
                     }
-                    guardar(funcionario);
+                    if(!guardar(funcionario))
+                        Files.delete(Paths.get("src/Files/Funcionario.dat"));
                 } catch (HeadlessException | IOException e) {
                 }
             }
         }
     }
     
+    /**
+     * Metodo que verifica se os dados inseridos correspondem a um determinado objecto Funcionario
+     * @param funcionario recebe um arraylist dos objectos de Funcionario
+     * @param username recebe um identificador que sera usado como chave para comparar o nome do usuario
+     * @param jPassField recebe um identificador que sera usado como chave para comparar a senha
+     * @return o valor booleano da funcao, se os dados inseridos correspondem a dados de um objecto ja existente
+     */
     public static boolean isFuncionario(ArrayList<Funcionario> funcionario, String username, char[] jPassField){
-        
-        boolean matches = false;
         
         String concat ="";
         for (int i = 0; i<jPassField.length; i++){
@@ -80,45 +105,53 @@ public class GuardarFuncionario {
                 try{
                     for(int i = 0; i<funcionario.size(); i++){
                         if(username.equalsIgnoreCase(funcionario.get(i).getNomeUsuario()) && concat.equals(funcionario.get(i).getSenha())){
-                            matches = true;
+                            return true;
                         }
                     }
                 }catch(Exception e){
                 }
             }
         }
-        return matches;
+        return false;
     }
     
+    /**
+     * Metodo que edita dados de um objecto Funcionario
+     * @param funcionario recebe um arraylist dos objectos de Funcionario
+     * @param key recebe um identificador que sera usado como chave para comparar o nome ou id do usuario 
+     * @return a posicao no arraylist do objecto procurado se encontrado
+     */
     public static int editar(ArrayList<Funcionario> funcionario, String key){
         
-        int procurado = -1;
         if(Files.exists(Paths.get("src/Files/Funcionario.dat"))){
             if(!funcionario.isEmpty()){
                 for (int i = 0; i< funcionario.size(); i++){
                     if (key.equalsIgnoreCase(funcionario.get(i).getNome()) || key.equalsIgnoreCase(funcionario.get(i).getId())){
-                        procurado = i;
-                        break;
+                        return i;
                     }
                 }
             }
         }
-        return procurado;
+        return -1;
     }
     
+    /**
+     * Metodo que procura um determinado objecto de Funcionario
+     * @param funcionario recebe um arraylist dos objectos de Funcionario
+     * @param nome recebe um identificador que sera usado como chave para comparar o nome
+     * @return o objecto procurado se encontrado, caso contrario retorna null
+     */
     public static Funcionario procurar(ArrayList<Funcionario> funcionario, String nome){
 
-        Funcionario procurado = null;
         if (Files.exists(Paths.get("src/Files/Funcionario.dat"))) {
             if (!funcionario.isEmpty()) {
                 for (int i = 0; i < funcionario.size(); i++) {
                     if (nome.equalsIgnoreCase(funcionario.get(i).getNome())|| nome.equalsIgnoreCase(funcionario.get(i).getId())) {
-                        procurado = funcionario.get(i);
-                        break;
+                        return funcionario.get(i);
                     }
                 }
             }
         }
-        return procurado;
+        return null;
     }
 }

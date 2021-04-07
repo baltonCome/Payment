@@ -39,6 +39,10 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+/**
+ * Classe da interface grafica do Menu do gestor. Contem todos metodos e accoes referentes ao gestor.
+ * @author Mr. Savagery
+ */
 public class MenuGestor extends JFrame implements ActionListener{
     
     ArrayList<String> func = new ArrayList<>();
@@ -86,8 +90,16 @@ public class MenuGestor extends JFrame implements ActionListener{
     JButton deleteAcc = new JButton("Eliminar Conta", new ImageIcon("src/Files/Icons/deleteAcc.png"));
     JButton myData = new JButton("Meus Dados", new ImageIcon("src/Files/Icons/myData.png"));
    
+    /**
+     * Variavel usada para indicar cada funcionario no processamento dos ordenados.
+     * @see PayRollForm
+     *
+     */
     public static int allDone;
     
+    /**
+     * Construtor contendo a GUI geral do gestor, funciona como Dashboard permitido a navegacao entre os diversos submenus do menu do gestor.
+     */
     public MenuGestor() throws ClassNotFoundException{
         
         setTitle("Menu Gestor");
@@ -157,6 +169,10 @@ public class MenuGestor extends JFrame implements ActionListener{
     JTable tabela;
     JScrollPane scroll;   
     
+    /**
+     * Este metodo gera uma GUI que constitui um dos submenus do gestor.
+     * E neste metodo que sao efectuadas todas as operacoes referentes ao funcionario.
+     */
     public void Funcionarios() throws ClassNotFoundException{
         
         register.setBackground(new Color(102,133,121));
@@ -266,6 +282,10 @@ public class MenuGestor extends JFrame implements ActionListener{
         }
     }  
     
+    /**
+     * Este metodo gera uma GUI que constitui um dos submenus do gestor.
+     * E neste metodo que sao efectuadas todas as operacoes referentes aos veiculos.
+     */
     public void Veiculos() throws ClassNotFoundException{
         
         JPanel upColorPanel = new JPanel();
@@ -366,6 +386,11 @@ public class MenuGestor extends JFrame implements ActionListener{
         }
     }  
     
+    /**
+     * Este metodo gera uma GUI que constitui um dos submenus do gestor.
+     * E neste metodo que sao exibidas e efectuadas todas as operacoes referentes as financas,
+     * como o processamento de pagamentos, lista de vendas efectuadas e a folha de pagamento .
+     */
     public void Financas(){
         
         JPanel upColorPanel = new JPanel();
@@ -396,6 +421,10 @@ public class MenuGestor extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Este metodo gera uma GUI que constitui um dos submenus do gestor.
+     * E neste metodo que sao gerados todos os relatorios... de vendas, de pagamentos e de stock.
+     */
     public void Relatorios(){
         
         JPanel upColorPanel = new JPanel();
@@ -426,6 +455,11 @@ public class MenuGestor extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Este metodo gera uma GUI que constitui um dos submenus do gestor.
+     * E neste que sao contidas as configuracoes do gestor, 
+     * como a adicionar, alterar dados ou ate mesmo eliminar dados.
+     */
     public void Settings(){
         
         JPanel upColorPanel = new JPanel();
@@ -464,6 +498,10 @@ public class MenuGestor extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Este metodo gera uma GUI que constitui um dos submenus do gestor.
+     * Contem algumas informacoes sobre o sistema.
+     */
     public void About(){
         
         JPanel upColorPanel = new JPanel();
@@ -500,7 +538,10 @@ public class MenuGestor extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
     }
     
-    
+    /**
+     * Metodo contendo todos eventos da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== leave){
@@ -749,8 +790,5 @@ public class MenuGestor extends JFrame implements ActionListener{
                 }
             }
         }
-    }
-    public static void main (String [] args) throws ClassNotFoundException{
-        new MenuGestor().Funcionarios();
     }
 }

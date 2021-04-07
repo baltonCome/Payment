@@ -24,7 +24,10 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 
-
+/**
+ * Classe da Interface Grafica da tabela de vendas
+ * @author Mr. Savagery
+ */
 public class TabelaVendas extends JFrame implements ActionListener {
     
     ArrayList<String> vend = new ArrayList<>();
@@ -39,6 +42,9 @@ public class TabelaVendas extends JFrame implements ActionListener {
     JButton fechar = new JButton("Fechar");
     JLabel vendasIcon = new JLabel(new ImageIcon("src/Files/Icons/vendas.png"));
     
+    /**
+     * Contrutor contendo a GUI da tabela de Vendas
+     */
     public TabelaVendas() throws ClassNotFoundException{
         
         setTitle("VENDAS");
@@ -134,6 +140,10 @@ public class TabelaVendas extends JFrame implements ActionListener {
         }
     }  
     
+    /**
+     * Metodo contendo evento da classe
+     * @param ae como variavel do evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()== fechar){

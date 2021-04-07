@@ -13,10 +13,17 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
+/**
+ * Classe controller do objecto carro
+ * @author Mr. Savagery
+ */
 public class GuardarCarro implements Serializable {
     
-    public static void guardar (ArrayList <Carros> carros ) throws IOException{
+    /**
+     * Metodo que guarda objectos de Carros
+     * @param carros recebe um arraylist do objecto Carros
+     */
+    public static boolean guardar (ArrayList <Carros> carros ) throws IOException{
         
         if (!carros.isEmpty()){
             try(FileOutputStream fos = new FileOutputStream("src/Files/Carros.dat")){
@@ -26,11 +33,17 @@ public class GuardarCarro implements Serializable {
                     oos.close();
                     fos.flush();
                     fos.close();
+                    return true;
                 }
             }
         }
+        return false;
     }
      
+    /**
+     * Metodo de Leitura
+     * @return os objectos de Carros num arraylist
+     */
     public static ArrayList<Carros> mostrar () throws IOException, ClassNotFoundException{
         
         try (FileInputStream fis = new FileInputStream("src/Files/Carros.dat")){
@@ -40,6 +53,11 @@ public class GuardarCarro implements Serializable {
         }
     } 
     
+    /**
+     * Metodo que elimina determinado objecto Carros
+     * @param carros recebe um arraylist do objecto carros
+     * @param chassi identificador usadio para identificar o objecto a ser eliminado
+     */
     public static void apagar(ArrayList<Carros> carros, String chassi){
 
         boolean found = false;
@@ -53,37 +71,69 @@ public class GuardarCarro implements Serializable {
                             procurado = carros.get(i);
                             carros.remove(procurado);
                             JOptionPane.showMessageDialog(null, "Veiculo Removido","INFO",JOptionPane.PLAIN_MESSAGE);
+                            if(!guardar(carros))
+                                Files.delete(Paths.get("src/Files/Carros.dat"));
                             break;
                         }
                     }
                     if (!found){
                         JOptionPane.showMessageDialog(null, "Veiculo Nao encontrado","INFO",JOptionPane.PLAIN_MESSAGE);
                     }
-                    guardar(carros);
                 } catch (HeadlessException | IOException e) {
                 }
             }
         }
     }
 
+    /**
+     * Metodo de pesquisa
+     * @param carros carros recebe um arraylist do objecto carros
+     * @param marca idenificador que e usado como chave de busca
+     * @return o objecto de carros procurado caso exista 
+     */
     public static Carros procurar(ArrayList<Carros> carros, String marca){
 
-        Carros procurado = null;
         if (Files.exists(Paths.get("src/Files/Carros.dat"))) {
             if (!carros.isEmpty()) {
                 try {
                     for (int i = 0; i < carros.size(); i++) {
                         if (marca.equalsIgnoreCase(carros.get(i).getMarca())||marca.equalsIgnoreCase(carros.get(i).getModelo())){
-                            procurado = carros.get(i);
+                            return carros.get(i);
                         }
                     }
                 } catch (Exception e) {
                 }
             }
         }
-        return procurado;
+        return null;
     }
     
+    
+    public static boolean uniqueChassi(ArrayList<Carros> carros, String chassi){
+
+        if (Files.exists(Paths.get("src/Files/Carros.dat"))) {
+            if (!carros.isEmpty()) {
+                try {
+                    for (int i = 0; i < carros.size(); i++) {
+                        if (chassi.equalsIgnoreCase(carros.get(i).getChassi())){
+                            return false;
+                        }
+                    }
+                } catch (Exception e) {
+                }
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * Metodo que verifica a existencia de um determinado objecto Carros para sua posterior venda
+     * @param car recebe um arraylist do objecto carros
+     * @param marca idenificador que e usado como chave de busca
+     * @param modelo idenificador que e usado como chave de busca
+     * @param chassi idenificador que e usado como chave de busca
+     * @return a posicao do objecto se encontrado, caso contrario retorna null
+     */
     public static int podeVender(ArrayList<Carros> car, String marca, String modelo, String chassi){
         
         if(Files.exists(Paths.get("src/Files/Carros.dat"))){
@@ -99,6 +149,11 @@ public class GuardarCarro implements Serializable {
         return -1;
     }
     
+    /**
+     * Metodo que confirma a venda de um veiculo removendo-o da lista dos disponiveis
+     * @param car recebe um arraylist do objecto carros
+     * @param chassi idenificador que e usado como chave de busca
+     */
     public static void vendido(ArrayList<Carros> car, String chassi) throws IOException{
         
         if(Files.exists(Paths.get("src/Files/Carros.dat"))){
@@ -108,7 +163,8 @@ public class GuardarCarro implements Serializable {
                         car.remove(car.get(i));
                         break;
                     }
-                }guardar(car);
+                }if(!guardar(car))
+                    Files.delete(Paths.get("src/Files/Carros.dat"));
             }
         }
     }
