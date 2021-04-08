@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/TabelaVendas.java</file>
-            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/GestUpdateForm.java</file>
-            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/MenuVendedor.java</file>
-            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/PayRollForm.java</file>
+            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/ChangePassForm.java</file>
+            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/Controller/GuardarGestor.java</file>
+            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/Controller/GuardarVenda.java</file>
+            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/Controller/GuardarCarro.java</file>
+            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/Controller/GuardarFuncionario.java</file>
+            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/ModelsDao/Metodos.java</file>
+            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/CarRegisterForm.java</file>
             <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/SellForm.java</file>
             <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/MenuGestor.java</file>
+            <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/Controller/GuardarSalario.java</file>
             <file>file:/C:/Users/Mr.%20Savagery/Documents/NetBeansProjects/PaySell/src/View/Login.java</file>
         </group>
     </open-files>
