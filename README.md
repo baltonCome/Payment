@@ -1,5 +1,4 @@
 # Payment
-Trabalho Semestral
 PAYSELL
 Descricao:
 Um sistema que simula gestao de uma concessionaria, isto e, compras, vendas de automoveis,
